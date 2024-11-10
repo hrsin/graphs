@@ -29,9 +29,9 @@ def info():
         print(data["CAN1.Fault.FIC"].value_counts())
         print(data["CAN1.Fault.FTC"].value_counts())
         print(data["CAN1.Fault.FTIC"].value_counts()) 
-        print(data["CAN1.Fault.FC"].value_counts()) #frequency of values in a column
-        print(data.select_dtypes("object").columns) #selecting columns with object datatype 
-        print(data["CAN1.Voltage1.Cell_01"].nunique()) #mean of a column
+        print(data["CAN1.Fault.FC"].value_counts()) #frequency of values in a column 
+        for column in data.select_dtypes("object").columns:
+            print(f"No. of unique values in {column} column: ", data[column].nunique()) #number of unique values in a column
         # print(data.groupby("#some text value to group by")["CAN1.Voltage1.Cell_01"].std()) #grouping data by a column and calculating mean of another column
     """ 
         print("Data duplicated: ", data.duplicated().sum())
