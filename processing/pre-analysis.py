@@ -2,13 +2,13 @@ import pandas as pd
 import numpy as np
 import os
 import tkinter as tk
-from tkinter import filedialog
+import tkinter.filedialog as fd
 import ttkbootstrap as ttk
 
 file_path=None
 def choose_file():
     global file_path
-    file_path = tk.filedialog.askopenfilename(title="Select csv file", filetypes=[("CSV files", "*.csv")])
+    file_path = fd.askopenfilename(title="Select csv file", filetypes=[("CSV files", "*.csv")])
     if file_path:
         print("File selected: ", file_path)
         app.quit()
@@ -32,9 +32,10 @@ def info():
         print(data["CAN1.Fault.FC"].value_counts()) #frequency of values in a column 
         for column in data.select_dtypes("object").columns:
             print(f"No. of unique values in {column} column: ", data[column].nunique()) #number of unique values in a column
-        # print(data.groupby("#some text value to group by")["CAN1.Voltage1.Cell_01"].std()) #grouping data by a column and calculating mean of another column
+        # print(data.groupby("#some text value to group by")["CAN1.Voltage1.Cell_01"].std()) #grouping data by a column and calculating mean of another column    
+        print("Data duplicated: ", data.duplicated().sum()) #total sum of no. of duplicated rows in data
     """ 
-        print("Data duplicated: ", data.duplicated().sum())
+        
         print("Data duplicated rows: ", data[data.duplicated()])
         print("Data duplicated rows: ", data[data.duplicated(keep=False)])
     """

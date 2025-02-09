@@ -13,12 +13,6 @@ def select_file():
     if filepath:
         print("\nFile path Selected-----\n", filepath)
         app.quit()
-
-
-
-
-
-
 app = tk.Tk()
 btn = ttk.Button(app,text="Select file", command=select_file)
 lbl = ttk.Label(app, text="Select the file to plot the frequency bar chart")
